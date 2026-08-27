@@ -28,3 +28,25 @@ Consulte os arquivos e diretórios deste repositório para acompanhar os estudos
 ## Autoria
 
 Projeto desenvolvido como parte da trilha de Inteligência Artificial da Compass UOL.
+
+## Primeiro checkpoint: Monitoramento da Fauna
+
+Este repositorio inclui uma analise reproduzivel dos cinco desafios do checkpoint.
+
+### Executar
+
+1. Crie um ambiente virtual e instale as dependencias:
+
+	```bash
+	python3 -m venv .venv
+	source .venv/bin/activate
+	pip install -r requirements.txt
+	```
+
+2. Gere o relatorio:
+
+	```bash
+	python3 analise_fauna.py
+	```
+
+O script le `data/dataset_monitoramento_fauna.json`, trata temperatura e umidade, preserva valores ausentes e grava os resultados em `relatorio_monitoramento_fauna.md`.
