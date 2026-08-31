@@ -85,7 +85,7 @@ def build_report(dataframe):
     activity = dataframe[dataframe["especie"].isin(selected_species)].groupby(["especie", "periodo"], observed=False).size().unstack(fill_value=0)
 
     # --- Desafio 3: Umidade e anfíbios ---
-    # Removemos registros sem umidade para focar na relação entre umidade e ocorrência de anfíbios.
+    # Removendo registros sem umidade para focar na relação entre umidade e ocorrência de anfíbios.
     humidity = dataframe.dropna(subset=["umidade_pct"])
     humidity_counts = counts_table(humidity["faixa_umidade"])
     amphibians = humidity[humidity["grupo"] == "Anfíbio"]
@@ -187,7 +187,7 @@ def build_report(dataframe):
 
 
 if __name__ == "__main__":
-    # Etapa final: executa a pipeline completa e salva o relatório em disco.
+    # Etapa final: executa a pipeline completa e salva o relatório no diretório do projeto.
     report = build_report(load_data())
     REPORT_PATH.write_text(report, encoding="utf-8")
     print(f"Relatorio salvo em {REPORT_PATH}")
