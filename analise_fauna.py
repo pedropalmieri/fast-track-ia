@@ -155,7 +155,9 @@ def build_report(dataframe):
     highest_rate_band = amphibian_rate.idxmax()
     lines.extend([
         "",
-        f"A maior proporção de anfíbios ocorreu na faixa **{highest_rate_band}** ({format_number(amphibian_rate[highest_rate_band])}%). Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.",
+        f"A maior proporção de anfíbios ocorreu na faixa **{highest_rate_band}** ({format_number(amphibian_rate[highest_rate_band])}%). "
+        f"Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. "
+        f"A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.",
         "",
         "## Desafio 4 - Câmeras prioritárias",
         "",

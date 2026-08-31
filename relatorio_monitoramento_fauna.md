@@ -34,7 +34,7 @@ A comparação mostra que os horários de pico variam entre espécies; por isso,
 | Média (60%-79,9%) | 2331 | 389 | 16,7% |
 | Alta (>=80%) | 2017 | 789 | 39,1% |
 
-A maior proporção de anfíbios ocorreu na faixa **Alta (>=80%)** (39,1%). Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.
+A maior proporção de anfíbios ocorreu na faixa **Alta (>=80%)** (39,1%).Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.
 
 ## Desafio 4 - Câmeras prioritárias
 
