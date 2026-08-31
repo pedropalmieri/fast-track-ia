@@ -13,7 +13,7 @@ REPORT_PATH = ROOT / "relatorio_monitoramento_fauna.md"
 CAMERA_AREAS = {
     **dict.fromkeys(["CAM01", "CAM02", "CAM03", "CAM04"], "Cerrado aberto"),
     **dict.fromkeys(["CAM05", "CAM06", "CAM07", "CAM08"], "Mata de galeria"),
-    **dict.fromkeys(["CAM09", "CAM10", "CAM11", "CAM12"], "Veredas e areas umidas"),
+    **dict.fromkeys(["CAM09", "CAM10", "CAM11", "CAM12"], "Veredas e áreas úmidas"),
 }
 
 
@@ -49,14 +49,14 @@ def load_data():
     dataframe["periodo"] = pd.cut(
         dataframe["hora"],
         bins=[-1, 5, 11, 17, 23],
-        labels=["Madrugada (00h-05h)", "Manha (06h-11h)", "Tarde (12h-17h)", "Noite (18h-23h)"],
+        labels=["Madrugada (00h-05h)", "Manhã (06h-11h)", "Tarde (12h-17h)", "Noite (18h-23h)"],
     )
 
     # Agrupamento da umidade em faixas para facilitar a comparação entre ambientes mais secos e úmidos.
     dataframe["faixa_umidade"] = pd.cut(
         dataframe["umidade_pct"],
         bins=[-float("inf"), 60, 80, float("inf")],
-        labels=["Baixa (<60%)", "Media (60%-79,9%)", "Alta (>=80%)"],
+        labels=["Baixa (<60%)", "Média (60%-79,9%)", "Alta (>=80%)"],
     )
 
     return dataframe
@@ -109,27 +109,27 @@ def build_report(dataframe):
 
     # Montando o texto do relatório em listas de linhas para facilitar a escrita final em Markdown.
     lines = [
-        "# Relatorio - Monitoramento da Fauna",
+        "# Relatório - Monitoramento da Fauna",
         "",
-        "Analise reproduzivel dos 5.000 registros entre 01/05/2026 e 30/05/2026.",
+        f"Análise reprodutível dos {len(dataframe):,.0f} registros entre 01/05/2026 e 30/05/2026.",
         "",
-        "## Preparacao dos dados",
+        "## Preparação dos dados",
         "",
         f"- Registros analisados: **{len(dataframe):,}**".replace(",", "."),
-        f"- Temperatura convertida para numero; umidade convertida para numero e mantida ausente quando nula ({int(dataframe['umidade_pct'].isna().sum())} registros).",
-        "- Periodos: madrugada (00h-05h), manha (06h-11h), tarde (12h-17h) e noite (18h-23h).",
-        "- Faixas de umidade: baixa (<60%), media (60%-79,9%) e alta (>=80%).",
+        f"- Temperatura convertida para número; umidade convertida para número e mantida ausente quando nula ({int(dataframe['umidade_pct'].isna().sum())} registros).",
+        "- Períodos: madrugada (00h-05h), manhã (06h-11h), tarde (12h-17h) e noite (18h-23h).",
+        "- Faixas de umidade: baixa (<60%), média (60%-79,9%) e alta (>=80%).",
         "",
         "## Desafio 1 - Capivaras",
         "",
-        f"A media foi de **{format_number(capybara_mean)} individuos por registro**, considerando {len(capivaras)} registros.",
-        f"Foram {solitary} registros solitarios ({solitary / len(capivaras) * 100:.1f}%) e {grouped} em grupo ({grouped / len(capivaras) * 100:.1f}%). Portanto, a maior parte dos registros envolve **grupos**.",
+        f"A média foi de **{format_number(capybara_mean)} indivíduos por registro**, considerando {len(capivaras)} registros.",
+        f"Foram {solitary} registros solitários ({solitary / len(capivaras) * 100:.1f}%) e {grouped} em grupo ({grouped / len(capivaras) * 100:.1f}%). Portanto, a maior parte dos registros envolve **grupos**.",
         "",
         "## Desafio 2 - Atividade ao longo do dia",
         "",
-        f"Foram escolhidas as tres especies mais registradas: {', '.join(selected_species)}.",
+        f"Foram escolhidas as três espécies mais registradas: {', '.join(selected_species)}.",
         "",
-        "| Especie | Madrugada | Manha | Tarde | Noite | Periodo de maior ocorrencia |",
+        "| Espécie | Madrugada | Manhã | Tarde | Noite | Período de maior ocorrência |",
         "|---|---:|---:|---:|---:|---|",
     ]
 
@@ -141,11 +141,11 @@ def build_report(dataframe):
 
     lines.extend([
         "",
-        "A comparacao mostra que os horarios de pico variam entre especies; por isso, uma rotina de campo deve considerar a especie-alvo, e nao apenas um horario unico para toda a fauna.",
+        "A comparação mostra que os horários de pico variam entre espécies; por isso, uma rotina de campo deve considerar a espécie-alvo e não apenas um único horário para toda a fauna.",
         "",
-        "## Desafio 3 - Umidade e anfibios",
+        "## Desafio 3 - Umidade e anfíbios",
         "",
-        "| Faixa de umidade | Registros validos | Registros de anfibios | Proporcao de anfibios na faixa |",
+        "| Faixa de umidade | Registros válidos | Registros de anfíbios | Proporção de anfíbios na faixa |",
         "|---|---:|---:|---:|",
     ])
 
@@ -155,11 +155,11 @@ def build_report(dataframe):
     highest_rate_band = amphibian_rate.idxmax()
     lines.extend([
         "",
-        f"A maior proporcao de anfibios ocorreu na faixa **{highest_rate_band}** ({format_number(amphibian_rate[highest_rate_band])}%). Assim, neste conjunto de dados, a umidade mais alta esta associada a maior frequencia relativa de registros de anfibios. A associacao nao prova causalidade e deve ser interpretada junto com horario, camera e esforco de amostragem.",
+        f"A maior proporção de anfíbios ocorreu na faixa **{highest_rate_band}** ({format_number(amphibian_rate[highest_rate_band])}%). Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.",
         "",
-        "## Desafio 4 - Cameras prioritarias",
+        "## Desafio 4 - Câmeras prioritárias",
         "",
-        "| Camera | Area | Registros | Especies distintas |",
+        "| Câmera | Área | Registros | Espécies distintas |",
         "|---|---|---:|---:|",
     ])
 
@@ -170,16 +170,16 @@ def build_report(dataframe):
     top_areas = camera_summary.head(3)["area"].value_counts()
     lines.extend([
         "",
-        f"Recomendo priorizar {', '.join(top_cameras)}, que combinam alto volume de registros e diversidade. Entre as tres primeiras, a area mais representada e **{top_areas.idxmax()}** ({top_areas.max()} cameras), mas a estrategia deve preservar cobertura das demais areas.",
+        f"Recomendo priorizar {', '.join(top_cameras)}, que combinam alto volume de registros e diversidade. Entre as três primeiras, a área mais representada é **{top_areas.idxmax()}** ({top_areas.max()} câmeras), mas a estratégia deve preservar a cobertura das demais áreas.",
         "",
-        "## Desafio 5 - Onca-pintada",
+        "## Desafio 5 - Onça-pintada",
         "",
-        f"Foram encontrados {len(jaguars)} registros de onca-pintada. As cameras mais indicadas sao **{', '.join(jaguar_cameras.head(3).index)}**, com {', '.join(str(value) for value in jaguar_cameras.head(3).tolist())} registros, respectivamente.",
-        f"A area com mais registros foi **{jaguar_areas.idxmax()}** ({jaguar_areas.max()} registros). O periodo de maior ocorrencia foi **{jaguar_periods.idxmax()}** ({jaguar_periods.max()} registros). Eu concentraria o proximo monitoramento nesses pontos e horarios, mantendo cameras de apoio porque ausencia de deteccao nao significa ausencia da especie.",
+        f"Foram encontrados {len(jaguars)} registros de onça-pintada. As câmeras mais indicadas são **{', '.join(jaguar_cameras.head(3).index)}**, com {', '.join(str(value) for value in jaguar_cameras.head(3).tolist())} registros, respectivamente.",
+        f"A área com mais registros foi **{jaguar_areas.idxmax()}** ({jaguar_areas.max()} registros). O período de maior ocorrência foi **{jaguar_periods.idxmax()}** ({jaguar_periods.max()} registros). Eu concentraria o próximo monitoramento nesses pontos e horários, mantendo câmeras de apoio porque ausência de detecção não significa ausência da espécie.",
         "",
-        "## Observacao",
+        "## Observação",
         "",
-        "Os resultados descrevem eventos de deteccao, nao abundancia populacional. Diferencas entre cameras tambem podem refletir posicionamento, cobertura, visibilidade e funcionamento dos equipamentos.",
+        "Os resultados descrevem eventos de detecção, não abundância populacional. Diferenças entre câmeras também podem refletir posicionamento, cobertura, visibilidade e funcionamento dos equipamentos.",
     ])
 
     # Finalizando juntando todas as linhas do relatório em um único texto Markdown.

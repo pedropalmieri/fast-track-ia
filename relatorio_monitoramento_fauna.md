@@ -1,58 +1,58 @@
-# Relatorio - Monitoramento da Fauna
+# Relatório - Monitoramento da Fauna
 
-Analise reproduzivel dos 5.000 registros entre 01/05/2026 e 30/05/2026.
+Análise reprodutível dos 5,000 registros entre 01/05/2026 e 30/05/2026.
 
-## Preparacao dos dados
+## Preparação dos dados
 
 - Registros analisados: **5.000**
-- Temperatura convertida para numero; umidade convertida para numero e mantida ausente quando nula (175 registros).
-- Periodos: madrugada (00h-05h), manha (06h-11h), tarde (12h-17h) e noite (18h-23h).
-- Faixas de umidade: baixa (<60%), media (60%-79,9%) e alta (>=80%).
+- Temperatura convertida para número; umidade convertida para número e mantida ausente quando nula (175 registros).
+- Períodos: madrugada (00h-05h), manhã (06h-11h), tarde (12h-17h) e noite (18h-23h).
+- Faixas de umidade: baixa (<60%), média (60%-79,9%) e alta (>=80%).
 
 ## Desafio 1 - Capivaras
 
-A media foi de **6,0 individuos por registro**, considerando 731 registros.
-Foram 6 registros solitarios (0.8%) e 725 em grupo (99.2%). Portanto, a maior parte dos registros envolve **grupos**.
+A média foi de **6,0 indivíduos por registro**, considerando 731 registros.
+Foram 6 registros solitários (0.8%) e 725 em grupo (99.2%). Portanto, a maior parte dos registros envolve **grupos**.
 
 ## Desafio 2 - Atividade ao longo do dia
 
-Foram escolhidas as tres especies mais registradas: Capivara, Sapo-cururu, Ema.
+Foram escolhidas as três espécies mais registradas: Capivara, Sapo-cururu, Ema.
 
-| Especie | Madrugada | Manha | Tarde | Noite | Periodo de maior ocorrencia |
+| Espécie | Madrugada | Manhã | Tarde | Noite | Período de maior ocorrência |
 |---|---:|---:|---:|---:|---|
-| Capivara | 72 | 292 | 283 | 84 | Manha (06h-11h) |
+| Capivara | 72 | 292 | 283 | 84 | Manhã (06h-11h) |
 | Sapo-cururu | 250 | 54 | 51 | 209 | Madrugada (00h-05h) |
 | Ema | 51 | 217 | 230 | 53 | Tarde (12h-17h) |
 
-A comparacao mostra que os horarios de pico variam entre especies; por isso, uma rotina de campo deve considerar a especie-alvo, e nao apenas um horario unico para toda a fauna.
+A comparação mostra que os horários de pico variam entre espécies; por isso, uma rotina de campo deve considerar a espécie-alvo e não apenas um único horário para toda a fauna.
 
-## Desafio 3 - Umidade e anfibios
+## Desafio 3 - Umidade e anfíbios
 
-| Faixa de umidade | Registros validos | Registros de anfibios | Proporcao de anfibios na faixa |
+| Faixa de umidade | Registros válidos | Registros de anfíbios | Proporção de anfíbios na faixa |
 |---|---:|---:|---:|
 | Baixa (<60%) | 477 | 21 | 4,4% |
-| Media (60%-79,9%) | 2331 | 389 | 16,7% |
+| Média (60%-79,9%) | 2331 | 389 | 16,7% |
 | Alta (>=80%) | 2017 | 789 | 39,1% |
 
-A maior proporcao de anfibios ocorreu na faixa **Alta (>=80%)** (39,1%). Assim, neste conjunto de dados, a umidade mais alta esta associada a maior frequencia relativa de registros de anfibios. A associacao nao prova causalidade e deve ser interpretada junto com horario, camera e esforco de amostragem.
+A maior proporção de anfíbios ocorreu na faixa **Alta (>=80%)** (39,1%). Assim, neste conjunto de dados, a umidade mais alta está associada à maior frequência relativa de registros de anfíbios. A associação não prova causalidade e deve ser interpretada junto com horário, câmera e esforço de amostragem.
 
-## Desafio 4 - Cameras prioritarias
+## Desafio 4 - Câmeras prioritárias
 
-| Camera | Area | Registros | Especies distintas |
+| Câmera | Área | Registros | Espécies distintas |
 |---|---|---:|---:|
-| CAM09 | Veredas e areas umidas | 523 | 12 |
-| CAM12 | Veredas e areas umidas | 504 | 13 |
-| CAM10 | Veredas e areas umidas | 474 | 12 |
+| CAM09 | Veredas e áreas úmidas | 523 | 12 |
+| CAM12 | Veredas e áreas úmidas | 504 | 13 |
+| CAM10 | Veredas e áreas úmidas | 474 | 12 |
 | CAM02 | Cerrado aberto | 471 | 12 |
 | CAM04 | Cerrado aberto | 442 | 12 |
 
-Recomendo priorizar CAM09, CAM12, CAM10, que combinam alto volume de registros e diversidade. Entre as tres primeiras, a area mais representada e **Veredas e areas umidas** (3 cameras), mas a estrategia deve preservar cobertura das demais areas.
+Recomendo priorizar CAM09, CAM12, CAM10, que combinam alto volume de registros e diversidade. Entre as três primeiras, a área mais representada é **Veredas e áreas úmidas** (3 câmeras), mas a estratégia deve preservar a cobertura das demais áreas.
 
-## Desafio 5 - Onca-pintada
+## Desafio 5 - Onça-pintada
 
-Foram encontrados 20 registros de onca-pintada. As cameras mais indicadas sao **CAM06, CAM08, CAM07**, com 6, 5, 4 registros, respectivamente.
-A area com mais registros foi **Mata de galeria** (17 registros). O periodo de maior ocorrencia foi **Noite (18h-23h)** (10 registros). Eu concentraria o proximo monitoramento nesses pontos e horarios, mantendo cameras de apoio porque ausencia de deteccao nao significa ausencia da especie.
+Foram encontrados 20 registros de onça-pintada. As câmeras mais indicadas são **CAM06, CAM08, CAM07**, com 6, 5, 4 registros, respectivamente.
+A área com mais registros foi **Mata de galeria** (17 registros). O período de maior ocorrência foi **Noite (18h-23h)** (10 registros). Eu concentraria o próximo monitoramento nesses pontos e horários, mantendo câmeras de apoio porque ausência de detecção não significa ausência da espécie.
 
-## Observacao
+## Observação
 
-Os resultados descrevem eventos de deteccao, nao abundancia populacional. Diferencas entre cameras tambem podem refletir posicionamento, cobertura, visibilidade e funcionamento dos equipamentos.
+Os resultados descrevem eventos de detecção, não abundância populacional. Diferenças entre câmeras também podem refletir posicionamento, cobertura, visibilidade e funcionamento dos equipamentos.
