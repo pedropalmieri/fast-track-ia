@@ -43,10 +43,10 @@ Este repositorio inclui uma analise reproduzivel dos cinco desafios do checkpoin
 	pip install -r requirements.txt
 	```
 
-2. Gere o relatorio:
+2. Gere o relatorio dentro do checkpoint organizad:
 
 	```bash
-	python3 analise_fauna.py
+	python3 checkpoints/01-monitoramento-da-fauna/analise_fauna.py
 	```
 
-O script le `data/dataset_monitoramento_fauna.json`, trata temperatura e umidade, preserva valores ausentes e grava os resultados em `relatorio_monitoramento_fauna.md`.
+O script lê o dataset em `checkpoints/01-monitoramento-da-fauna/dataset_monitoramento_fauna.json`, trata temperatura e umidade, preserva valores ausentes e grava o relatório em `checkpoints/01-monitoramento-da-fauna/relatorio_monitoramento_fauna.md`.

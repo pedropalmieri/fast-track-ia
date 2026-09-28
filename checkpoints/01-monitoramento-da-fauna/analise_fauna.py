@@ -3,9 +3,12 @@ from pathlib import Path
 import pandas as pd
 
 
-# 1) Definição dos caminhos principais do projeto para localizar o dataset e salvar o relatorio final
-ROOT = Path(__file__).parent
-DATA_PATH = ROOT / "data" / "dataset_monitoramento_fauna.json"
+# 1) Definição dos caminhos principais do projeto para localizar o dataset e salvar o relatorio final.
+# Mantemos compatibilidade com os layouts antigos e atuais do checkpoint.
+ROOT = Path(__file__).resolve().parent
+DATA_PATH = ROOT / "dataset_monitoramento_fauna.json"
+if not DATA_PATH.exists():
+    DATA_PATH = ROOT / "data" / "dataset_monitoramento_fauna.json"
 REPORT_PATH = ROOT / "relatorio_monitoramento_fauna.md"
 
 # 2) Mapeamento de cada câmera para a área de habitat correspondente.
