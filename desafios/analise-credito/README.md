@@ -14,7 +14,7 @@ Seu papel neste desafio é atuar como **cientista de dados**. A partir dos dados
 
 ## 📊 Dados disponíveis
 
-O arquivo `credito.csv` contém registros de propostas de empréstimo analisadas pela CredAIR.
+O arquivo `dataset.csv` contém registros de propostas de empréstimo analisadas pela CredAIR.
 
 Cada linha representa uma **proposta de crédito** e reúne informações sobre o perfil do solicitante, sua situação financeira e as características do empréstimo.
 

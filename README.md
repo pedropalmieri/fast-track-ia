@@ -1,52 +1,64 @@
 # Fast Track IA
 
-Repositório de estudos e exercícios da trilha de Inteligência Artificial da Compass UOL.
+Repositório de estudos, checkpoints e desafios da trilha de Inteligência
+Artificial da Compass UOL.
 
-## Sobre
+## Conteúdo
 
-Este projeto acompanha a evolução dos conhecimentos desenvolvidos durante a trilha, reunindo anotações, exemplos práticos e atividades em um único lugar.
+```text
+.
+├── checkpoints/
+│   └── 01-monitoramento-da-fauna/
+│       ├── analise_fauna.py
+│       ├── checkpoint_monitoramento_fauna.md
+│       ├── dataset_monitoramento_fauna.json
+│       └── relatorio_monitoramento_fauna.md
+└── desafios/
+    └── analise-credito/
+        ├── analise_credito.ipynb
+        ├── dataset.csv
+        └── README.md
+```
 
-## Objetivos
+## Requisitos
 
-- Consolidar os fundamentos de Inteligência Artificial.
-- Registrar aprendizados e referências importantes.
-- Praticar os conceitos por meio de exercícios e pequenos projetos.
-- Acompanhar a evolução do conteúdo ao longo da formação.
+- Python 3.9 ou superior
+- `pip`
 
-## Organização
+Crie e ative um ambiente virtual na raiz do repositório e instale as
+dependências:
 
-O conteúdo será organizado por módulos ou temas à medida que novos materiais forem adicionados ao repositório.
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
-## Status
+No Windows, ative o ambiente com `.venv\Scripts\activate`.
 
-Em desenvolvimento, acompanhando o andamento da trilha de estudos.
+## Análises
 
-## Como acompanhar
+### Monitoramento da fauna
 
-Consulte os arquivos e diretórios deste repositório para acompanhar os estudos, exercícios e materiais produzidos durante a formação.
+Execute a partir da raiz do repositório:
 
-## Autoria
+```bash
+python checkpoints/01-monitoramento-da-fauna/analise_fauna.py
+```
 
-Projeto desenvolvido como parte da trilha de Inteligência Artificial da Compass UOL.
+O script lê `dataset_monitoramento_fauna.json` e atualiza
+`relatorio_monitoramento_fauna.md` no mesmo diretório.
 
-## Primeiro checkpoint: Monitoramento da Fauna
+### Análise de crédito
 
-Este repositorio inclui uma analise reproduzivel dos cinco desafios do checkpoint.
+Inicie o Jupyter no diretório do desafio para que o notebook encontre o dataset
+usando o caminho relativo configurado:
 
-### Executar
+```bash
+cd desafios/analise-credito
+jupyter lab analise_credito.ipynb
+```
 
-1. Crie um ambiente virtual e instale as dependencias:
-
-	```bash
-	python3 -m venv .venv
-	source .venv/bin/activate
-	pip install -r requirements.txt
-	```
-
-2. Gere o relatorio dentro do checkpoint organizad:
-
-	```bash
-	python3 checkpoints/01-monitoramento-da-fauna/analise_fauna.py
-	```
-
-O script lê o dataset em `checkpoints/01-monitoramento-da-fauna/dataset_monitoramento_fauna.json`, trata temperatura e umidade, preserva valores ausentes e grava o relatório em `checkpoints/01-monitoramento-da-fauna/relatorio_monitoramento_fauna.md`.
+No Jupyter, execute todas as células em ordem. O contexto, os dados e as etapas
+do desafio estão descritos em [desafios/analise-credito/README.md](desafios/analise-credito/README.md).
